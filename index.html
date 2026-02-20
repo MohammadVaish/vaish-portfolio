@@ -1827,22 +1827,12 @@ document.getElementById("contact-form").addEventListener("submit", function (e) 
         "template_7t8tdnt",
         this
     )
- .then(function () {
-    const btnArea = document.querySelector(".button-area");
-
-    btnArea.innerHTML =
-        "<span class='success-msg' style='color:lime'>Message sent! I will contact you soon 👍</span>";
-
-    document.getElementById("contact-form").reset();
-
-    // 4 second baad hata do
-    setTimeout(() => {
-        btnArea.innerHTML =
-        '<button type="submit">Send message</button>';
-    }, 4000);
-
-}, function (error) {
-    alert("Failed ❌\n" + JSON.stringify(error));
+   .then(function () {
+        alert("Message sent successfully ✅");
+        document.getElementById("contact-form").reset();
+    }, function (error) {
+        alert("Failed ❌\n" + JSON.stringify(error));
+    });
 });
 </script>
 </body>
