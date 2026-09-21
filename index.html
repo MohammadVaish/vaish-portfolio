@@ -208,7 +208,16 @@
         /* =========================================================
            NAVBAR
         ========================================================= */
+.navbar .logo img {
+    width: 180px;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
 
+.navbar.sticky .logo img {
+    filter: brightness(0) invert(1);
+}
         .navbar {
             position: fixed;
 
@@ -1844,9 +1853,11 @@
 
         <div class="container nav-inner">
 
-            <a href="#home" class="logo">
-                MV<span>.</span>
-            </a>
+            <div class="logo">
+    <a href="#home">
+        <img src="images/mohammad-vaish-logo.png" alt="Mohammad Vaish">
+    </a>
+</div>
 
             <ul class="nav-links">
 
