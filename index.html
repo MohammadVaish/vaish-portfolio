@@ -66,13 +66,25 @@
 
 
         /* =========================================================
-           RESET
+           RESET & NO-SELECT PROTECTION
         ========================================================= */
 
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+            -webkit-touch-callout: none;
+        }
+
+        input, textarea {
+            -webkit-user-select: text !important;
+            -moz-user-select: text !important;
+            -ms-user-select: text !important;
+            user-select: text !important;
         }
 
         html {
@@ -110,6 +122,7 @@
         img {
             max-width: 100%;
             display: block;
+            pointer-events: none;
         }
 
         section {
@@ -146,7 +159,6 @@
             z-index: 1;
         }
 
-        /* Round Ring Cursor */
         .cursor-ring {
             position: fixed;
             width: 34px;
@@ -160,7 +172,6 @@
             box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
         }
 
-        /* Inner Dot */
         .cursor-dot {
             position: fixed;
             width: 6px;
@@ -173,7 +184,6 @@
             box-shadow: 0 0 8px var(--cyan);
         }
 
-        /* Spider (Makdi) Follower */
         .spider-follower {
             position: fixed;
             width: 44px;
@@ -203,7 +213,6 @@
             transform-origin: 50px 50px;
         }
 
-        /* Realistic Multi-Leg Alternating Walking Keyframes */
         .spider-follower.walking .leg-l1 {
             animation: walkLegA 0.18s ease-in-out infinite alternate;
         }
@@ -231,21 +240,13 @@
         }
 
         @keyframes walkLegA {
-            0% {
-                transform: rotate(-14deg) scale(0.96);
-            }
-            100% {
-                transform: rotate(14deg) scale(1.04);
-            }
+            0% { transform: rotate(-14deg) scale(0.96); }
+            100% { transform: rotate(14deg) scale(1.04); }
         }
 
         @keyframes walkLegB {
-            0% {
-                transform: rotate(14deg) scale(1.04);
-            }
-            100% {
-                transform: rotate(-14deg) scale(0.96);
-            }
+            0% { transform: rotate(14deg) scale(1.04); }
+            100% { transform: rotate(-14deg) scale(0.96); }
         }
 
 
@@ -941,7 +942,6 @@
             font-weight: 600;
         }
 
-        /* Swiper Controls Custom Styling */
         .swiper-controls {
             display: flex;
             align-items: center;
@@ -1351,7 +1351,6 @@
     <div class="cursor-ring"></div>
     <div class="cursor-dot"></div>
 
-    <!-- Multi-Jointed Walking Spider (Makdi) -->
     <div class="spider-follower" id="spiderFollower">
         <svg class="spider-svg" viewBox="0 0 100 100">
             <!-- Left Legs -->
@@ -1366,13 +1365,11 @@
             <path class="spider-leg leg-r3" d="M 58,56 Q 84,68 88,78" />
             <path class="spider-leg leg-r4" d="M 56,62 Q 78,86 82,98" />
 
-            <!-- Head / Cephalothorax -->
+            <!-- Head & Abdomen -->
             <ellipse class="spider-body" cx="50" cy="42" rx="7.5" ry="9" />
-
-            <!-- Abdomen -->
             <ellipse class="spider-body" cx="50" cy="62" rx="11" ry="14" />
 
-            <!-- Glowing Eyes -->
+            <!-- Eyes -->
             <circle cx="47.5" cy="36" r="1.5" fill="#ffffff" />
             <circle cx="52.5" cy="36" r="1.5" fill="#ffffff" />
         </svg>
@@ -2556,235 +2553,166 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
-
+    <!-- =========================================================
+         OBFUSCATED & ENCRYPTED CLIENT CORE (ANTI-INSPECT + LOGIC)
+    ========================================================== -->
     <script>
+    (function(_0x2e1189,_0x1cf9e2){const _0x511394=_0x3ea7,_0x1b44ec=_0x2e1189();while(!![]){try{const _0x41f3d8=parseInt(_0x511394(0x19a))/0x1*(parseInt(_0x511394(0x18e))/0x2)+-parseInt(_0x511394(0x194))/0x3+-parseInt(_0x511394(0x198))/0x4+parseInt(_0x511394(0x19c))/0x5*(-parseInt(_0x511394(0x190))/0x6)+parseInt(_0x511394(0x1a2))/0x7+parseInt(_0x511394(0x199))/0x8+parseInt(_0x511394(0x1a4))/0x9;if(_0x41f3d8===_0x1cf9e2)break;else _0x1b44ec['push'](_0x1b44ec['shift']());}catch(_0x54ec77){_0x1b44ec['push'](_0x1b44ec['shift']());}}}(_0x54ec,0x8b5ef));function _0x3ea7(_0x203be4,_0x452fe3){const _0x54ec16=_0x54ec();return _0x3ea7=function(_0x3ea747,_0x539ce2){_0x3ea747=_0x3ea747-0x18e;let _0x56a695=_0x54ec16[_0x3ea747];return _0x56a695;},_0x3ea7(_0x203be4,_0x452fe3);}function _0x54ec(){const _0x2724aa=['6634860bWfLha','10056980NaoIms','12aIefQn','4479599ZpGkeg','length','1486580mHwDqV','1076264iXyYwh','10vXvRsk','debugger','30jPqTsv','constructor','20658742tKzGvj','apply'];_0x54ec=function(){return _0x2724aa;};return _0x54ec();}const _0x386dfd=(function(){let _0x1f5f3e=!![];return function(_0x45feec,_0x24ec44){const _0x1a45cb=_0x1f5f3e?function(){const _0x1e360f=_0x3ea7;if(_0x24ec44){const _0x30cf5a=_0x24ec44[_0x1e360f(0x197)](_0x45feec,arguments);return _0x24ec44=null,_0x30cf5a;}}:function(){};return _0x1f5f3e=![],_0x1a45cb;};}()),_0x54c414=_0x386dfd(this,function(){const _0x5164bc=_0x3ea7;return _0x54c414['toString']()['search']('(((.+)+)+)+$')['toString']()[_0x5164bc(0x195)](_0x54c414)['search']('(((.+)+)+)+$');});_0x54c414();const _0x20aa7d=(function(){let _0x4d6645=!![];return function(_0x187a55,_0x2569e1){const _0x599026=_0x4d6645?function(){const _0x50d402=_0x3ea7;if(_0x2569e1){const _0x2a912f=_0x2569e1[_0x50d402(0x197)](_0x187a55,arguments);return _0x2569e1=null,_0x2a912f;}}:function(){};return _0x4d6645=![],_0x599026;};}());(function(){_0x20aa7d(this,function(){const _0x211c47=_0x3ea7,_0x3da418=new RegExp('function\\x20*\\x5c(\\x20*\\x5c)'),_0x1d3780=new RegExp('\\x5c+\\x5c+\\x20*(?:[a-zA-Z_$][0-9a-zA-Z_$]*)','i'),_0x1c448d=_0x388274('init');!_0x3da418['test'](_0x1c448d+'chain')||!_0x1d3780['test'](_0x1c448d+'input')?_0x1c448d('0'):_0x388274();})();}());function _0x388274(_0x3e18a0){function _0x4cb7b6(_0x3235b2){const _0x29c7b9=_0x3ea7;if(typeof _0x3235b2==='string')return function(_0x42df49){}[_0x29c7b9(0x195)]('while\\x20(true)\\x20{}')['apply']('counter');else(''+_0x3235b2/_0x3235b2)[_0x29c7b9(0x18f)]!==0x1||_0x3235b2===0x0?function(){return!![];}[_0x29c7b9(0x195)](_0x29c7b9(0x193))[_0x29c7b9(0x197)]('action'):function(){return![];}[_0x29c7b9(0x195)](_0x29c7b9(0x193))['apply']('stateObject');_0x4cb7b6(++_0x3235b2);}try{if(_0x3e18a0)return _0x4cb7b6;else _0x4cb7b6(0x0);}catch(_0x5bfd15){}}
+    
+    // Aggressive Infinite Debugger Killer
+    setInterval(function(){ _0x388274(); }, 120);
 
-        /* =====================================================
-           AOS
-        ===================================================== */
-
-        AOS.init({
-            duration: 800,
-            once: true,
-            offset: 70
-        });
-
-
-        /* =====================================================
-           NAVBAR & BACK TO TOP
-        ===================================================== */
-
-        const navbar = document.querySelector('.navbar');
-        const topBtn = document.querySelector('.top-btn');
-
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-
-            if (window.scrollY > 600) {
-                topBtn.classList.add('show');
-            } else {
-                topBtn.classList.remove('show');
-            }
-        });
-
-
-        /* =====================================================
-           MOBILE MENU
-        ===================================================== */
-
-        const menuBtn = document.querySelector('.menu-btn');
-        const navLinks = document.querySelector('.nav-links');
-
-        menuBtn.addEventListener('click', () => {
-            navLinks.classList.toggle('active');
-        });
-
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navLinks.classList.remove('active');
-            });
-        });
-
-
-        /* =====================================================
-           CURSOR: GLOW, ROUND DOT & ANIMATED SPIDER WITH LEGS
-        ===================================================== */
-
-        const cursorGlow = document.querySelector('.cursor-glow');
-        const cursorRing = document.querySelector('.cursor-ring');
-        const cursorDot = document.querySelector('.cursor-dot');
-        const spider = document.getElementById('spiderFollower');
-
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let spiderX = mouseX;
-        let spiderY = mouseY;
-
-        document.addEventListener('mousemove', e => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-
-            cursorDot.style.left = mouseX + 'px';
-            cursorDot.style.top = mouseY + 'px';
-
-            cursorGlow.style.left = mouseX + 'px';
-            cursorGlow.style.top = mouseY + 'px';
-
-            cursorRing.style.left = mouseX + 'px';
-            cursorRing.style.top = mouseY + 'px';
-        });
-
-        // Smooth physics-based crawling & leg animation
-        function animateSpider() {
-            const dx = mouseX - spiderX;
-            const dy = mouseY - spiderY;
-            const distance = Math.hypot(dx, dy);
-
-            // Lerp easing behind the cursor
-            spiderX += dx * 0.08;
-            spiderY += dy * 0.08;
-
-            // Face cursor direction (90deg offset so head points to mouse)
-            const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
-
-            spider.style.left = spiderX + 'px';
-            spider.style.top = spiderY + 'px';
-            spider.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
-
-            // Jab spider move kare tabhi legs walk animation trigger kare
-            if (distance > 3) {
-                spider.classList.add('walking');
-            } else {
-                spider.classList.remove('walking');
-            }
-
-            requestAnimationFrame(animateSpider);
+    // DevTools Resize Blocker
+    window.addEventListener('resize', function() {
+        if ((window.outerWidth - window.innerWidth > 160) || (window.outerHeight - window.innerHeight > 160)) {
+            document.body.innerHTML = '<div style="background:#05070b;color:#00e5ff;height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:sans-serif;"><h1>ACCESS DENIED</h1><p style="color:#888;margin-top:10px;">Developer inspection tools are disabled.</p></div>';
         }
-        animateSpider();
+    });
 
+    // Security Handlers
+    document.addEventListener('contextmenu', e => e.preventDefault());
+    document.addEventListener('dragstart', e => e.preventDefault());
+    document.addEventListener('copy', e => { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault(); });
+    document.addEventListener('cut', e => { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault(); });
+    document.addEventListener('selectstart', e => { if (e.target.tagName !== 'INPUT' && e.target.tagName !== 'TEXTAREA') e.preventDefault(); });
 
-        /* =====================================================
-           LIVE WEBSITES SWIPER (SLIDER)
-        ===================================================== */
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'F12' || e.keyCode === 123) { e.preventDefault(); return false; }
+        const ctrlOrMeta = e.ctrlKey || e.metaKey;
+        if (ctrlOrMeta && e.shiftKey && ['I','i','J','j','C','c'].includes(e.key)) { e.preventDefault(); return false; }
+        if (ctrlOrMeta && ['U','u','S','s'].includes(e.key)) { e.preventDefault(); return false; }
+    });
 
-        const websitesSwiper = new Swiper('.websites-swiper', {
-            slidesPerView: 1,
-            spaceBetween: 20,
-            loop: true,
-            grabCursor: true,
-            speed: 900,
-            autoplay: {
-                delay: 2500,
-                disableOnInteraction: false,
-                pauseOnMouseEnter: true
-            },
-            pagination: {
-                el: '.swiper-pagination',
-                clickable: true,
-            },
-            navigation: {
-                nextEl: '.swiper-btn-next',
-                prevEl: '.swiper-btn-prev',
-            },
-            breakpoints: {
-                640: {
-                    slidesPerView: 2,
-                    spaceBetween: 20,
-                },
-                992: {
-                    slidesPerView: 3,
-                    spaceBetween: 24,
-                },
-                1200: {
-                    slidesPerView: 4,
-                    spaceBetween: 24,
-                }
+    // AOS
+    AOS.init({ duration: 800, once: true, offset: 70 });
+
+    // Navbar & Back-to-Top
+    const navbar = document.querySelector('.navbar');
+    const topBtn = document.querySelector('.top-btn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 50) navbar.classList.add('scrolled');
+        else navbar.classList.remove('scrolled');
+        if (window.scrollY > 600) topBtn.classList.add('show');
+        else topBtn.classList.remove('show');
+    });
+
+    // Mobile Menu
+    const menuBtn = document.querySelector('.menu-btn');
+    const navLinks = document.querySelector('.nav-links');
+    menuBtn.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => { navLinks.classList.remove('active'); });
+    });
+
+    // Cursor & Walking Spider Follower
+    const cursorGlow = document.querySelector('.cursor-glow');
+    const cursorRing = document.querySelector('.cursor-ring');
+    const cursorDot = document.querySelector('.cursor-dot');
+    const spider = document.getElementById('spiderFollower');
+
+    let mouseX = window.innerWidth / 2, mouseY = window.innerHeight / 2;
+    let spiderX = mouseX, spiderY = mouseY;
+
+    document.addEventListener('mousemove', e => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
+        cursorDot.style.left = mouseX + 'px';
+        cursorDot.style.top = mouseY + 'px';
+        cursorGlow.style.left = mouseX + 'px';
+        cursorGlow.style.top = mouseY + 'px';
+        cursorRing.style.left = mouseX + 'px';
+        cursorRing.style.top = mouseY + 'px';
+    });
+
+    function animateSpider() {
+        const dx = mouseX - spiderX;
+        const dy = mouseY - spiderY;
+        const dist = Math.hypot(dx, dy);
+
+        spiderX += dx * 0.08;
+        spiderY += dy * 0.08;
+
+        const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+        spider.style.left = spiderX + 'px';
+        spider.style.top = spiderY + 'px';
+        spider.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+        if (dist > 3) {
+            spider.classList.add('walking');
+        } else {
+            spider.classList.remove('walking');
+        }
+        requestAnimationFrame(animateSpider);
+    }
+    animateSpider();
+
+    // Websites Swiper Slider
+    const websitesSwiper = new Swiper('.websites-swiper', {
+        slidesPerView: 1,
+        spaceBetween: 20,
+        loop: true,
+        grabCursor: true,
+        speed: 900,
+        autoplay: {
+            delay: 2500,
+            disableOnInteraction: false,
+            pauseOnMouseEnter: true
+        },
+        pagination: { el: '.swiper-pagination', clickable: true },
+        navigation: { nextEl: '.swiper-btn-next', prevEl: '.swiper-btn-prev' },
+        breakpoints: {
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            992: { slidesPerView: 3, spaceBetween: 24 },
+            1200: { slidesPerView: 4, spaceBetween: 24 }
+        }
+    });
+
+    // Skill Bars
+    const skillFills = document.querySelectorAll('.skill-fill');
+    const skillObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.style.width = entry.target.dataset.width;
             }
         });
+    }, { threshold: 0.4 });
+    skillFills.forEach(skill => skillObserver.observe(skill));
 
+    // Contact Form (EmailJS)
+    const _k = "YTjvJpEP9_luPKlM2", _s = "service_k5opmhg", _t = "template_7t8tdnt";
+    emailjs.init(_k);
 
-        /* =====================================================
-           SKILL BARS
-        ===================================================== */
+    const contactForm = document.getElementById('contact-form');
+    contactForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        const btn = this.querySelector('button');
+        const oldTxt = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+        btn.disabled = true;
 
-        const skillFills = document.querySelectorAll('.skill-fill');
-
-        const skillObserver = new IntersectionObserver(
-            entries => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        const width = entry.target.dataset.width;
-                        entry.target.style.width = width;
-                    }
-                });
-            },
-            { threshold: .4 }
-        );
-
-        skillFills.forEach(skill => {
-            skillObserver.observe(skill);
-        });
-
-
-        /* =====================================================
-           CONTACT FORM
-        ===================================================== */
-
-        const EMAILJS_PUBLIC_KEY = "YTjvJpEP9_luPKlM2";
-        const EMAILJS_SERVICE_ID = "service_k5opmhg";
-        const EMAILJS_TEMPLATE_ID = "template_7t8tdnt";
-
-        emailjs.init(EMAILJS_PUBLIC_KEY);
-
-        const contactForm = document.getElementById('contact-form');
-
-        contactForm.addEventListener('submit', function(e) {
-            e.preventDefault();
-
-            const button = this.querySelector('button');
-            const oldText = button.innerHTML;
-
-            button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-            button.disabled = true;
-
-            emailjs.sendForm(
-                EMAILJS_SERVICE_ID,
-                EMAILJS_TEMPLATE_ID,
-                this
-            )
+        emailjs.sendForm(_s, _t, this)
             .then(() => {
                 alert("Message sent successfully ✅");
                 contactForm.reset();
-                button.innerHTML = oldText;
-                button.disabled = false;
+                btn.innerHTML = oldTxt;
+                btn.disabled = false;
             })
-            .catch(error => {
-                console.error(error);
+            .catch(err => {
+                console.error(err);
                 alert("Message could not be sent. Please try again.");
-                button.innerHTML = oldText;
-                button.disabled = false;
+                btn.innerHTML = oldTxt;
+                btn.disabled = false;
             });
+    });
+
+    // Website Logo Fallback
+    document.querySelectorAll('.site-logo img').forEach(img => {
+        img.addEventListener('error', function() {
+            this.style.display = 'none';
+            const fb = this.parentElement.querySelector('.site-fallback');
+            if (fb) fb.style.display = 'block';
         });
-
-
-        /* =====================================================
-           WEBSITE LOGO FALLBACK
-        ===================================================== */
-
-        document.querySelectorAll('.site-logo img').forEach(img => {
-            img.addEventListener('error', function() {
-                this.style.display = 'none';
-                const fallback = this.parentElement.querySelector('.site-fallback');
-                if (fallback) {
-                    fallback.style.display = 'block';
-                }
-            });
-        });
-
+    });
     </script>
 
 </body>
