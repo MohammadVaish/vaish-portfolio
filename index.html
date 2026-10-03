@@ -127,7 +127,7 @@
 
 
         /* =========================================================
-           CURSOR GLOW, ROUND DOT & SPIDER FOLLOWER
+           CURSOR GLOW, ROUND DOT & ANIMATED SPIDER
         ========================================================= */
 
         .cursor-glow {
@@ -135,14 +135,12 @@
             width: 320px;
             height: 320px;
             border-radius: 50%;
-
             background:
                 radial-gradient(
                     circle,
                     rgba(0,229,255,.08),
                     transparent 65%
                 );
-
             transform: translate(-50%, -50%);
             pointer-events: none;
             z-index: 1;
@@ -178,19 +176,76 @@
         /* Spider (Makdi) Follower */
         .spider-follower {
             position: fixed;
-            width: 28px;
-            height: 28px;
+            width: 44px;
+            height: 44px;
             pointer-events: none;
             z-index: 10000;
             transform: translate(-50%, -50%);
-            filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
-            opacity: 0.9;
+            filter: drop-shadow(0 0 8px rgba(0, 229, 255, 0.9));
         }
 
-        .spider-follower svg {
+        .spider-svg {
             width: 100%;
             height: 100%;
+            overflow: visible;
+        }
+
+        .spider-body {
             fill: var(--cyan);
+        }
+
+        .spider-leg {
+            fill: none;
+            stroke: var(--cyan);
+            stroke-width: 3;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            transform-origin: 50px 50px;
+        }
+
+        /* Realistic Multi-Leg Alternating Walking Keyframes */
+        .spider-follower.walking .leg-l1 {
+            animation: walkLegA 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-l2 {
+            animation: walkLegB 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-l3 {
+            animation: walkLegA 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-l4 {
+            animation: walkLegB 0.18s ease-in-out infinite alternate;
+        }
+
+        .spider-follower.walking .leg-r1 {
+            animation: walkLegB 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-r2 {
+            animation: walkLegA 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-r3 {
+            animation: walkLegB 0.18s ease-in-out infinite alternate;
+        }
+        .spider-follower.walking .leg-r4 {
+            animation: walkLegA 0.18s ease-in-out infinite alternate;
+        }
+
+        @keyframes walkLegA {
+            0% {
+                transform: rotate(-14deg) scale(0.96);
+            }
+            100% {
+                transform: rotate(14deg) scale(1.04);
+            }
+        }
+
+        @keyframes walkLegB {
+            0% {
+                transform: rotate(14deg) scale(1.04);
+            }
+            100% {
+                transform: rotate(-14deg) scale(0.96);
+            }
         }
 
 
@@ -1289,18 +1344,37 @@
 
 
     <!-- =========================================================
-         CURSOR & SPIDER FOLLOWER
+         CURSOR & ANIMATED SPIDER WITH LEGS
     ========================================================== -->
 
     <div class="cursor-glow"></div>
     <div class="cursor-ring"></div>
     <div class="cursor-dot"></div>
 
-    <!-- Spider Follower (Makdi) -->
+    <!-- Multi-Jointed Walking Spider (Makdi) -->
     <div class="spider-follower" id="spiderFollower">
-        <svg viewBox="0 0 512 512">
-            <!-- Detailed SVG Spider Vector -->
-            <path d="M256 160c-26.5 0-48 21.5-48 48 0 14.2 6.2 27 16 35.8-15.3 14.5-25 35.1-25 58.2 0 44.2 35.8 80 80 80s80-35.8 80-80c0-23.1-9.7-43.7-25-58.2 9.8-8.8 16-21.6 16-35.8 0-26.5-21.5-48-48-48-7.7 0-15 1.8-21.4 5.1-7.2-3.3-15.3-5.1-24.6-5.1zM182.4 121.6c-4.4-7.6-14.1-10.2-21.7-5.8l-72 41.6c-7.6 4.4-10.2 14.1-5.8 21.7s14.1 10.2 21.7 5.8l63.5-36.6 28.5 49.4c4.4 7.6 14.1 10.2 21.7 5.8 7.6-4.4 10.2-14.1 5.8-21.7l-41.7-60.2zm147.2 0l-41.7 60.2c-4.4 7.6-1.8 17.3 5.8 21.7 7.6 4.4 17.3 1.8 21.7-5.8l28.5-49.4 63.5 36.6c7.6 4.4 17.3 1.8 21.7-5.8 4.4-7.6 1.8-17.3-5.8-21.7l-72-41.6c-7.6-4.4-17.3-1.8-21.7 5.8zM120 224c-8.8 0-16 7.2-16 16 0 17.2-6.8 33.7-18.7 45.7l-42.5 42.5c-6.2 6.2-6.2 16.4 0 22.6 6.2 6.2 16.4 6.2 22.6 0l42.5-42.5c17.9-17.9 28.1-42.6 28.1-68.3 0-8.8-7.2-16-16-16zm272 0c-8.8 0-16 7.2-16 16 0 25.7 10.2 50.4 28.1 68.3l42.5 42.5c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6l-42.5-42.5C414.8 273.7 408 257.2 408 240c0-8.8-7.2-16-16-16zM88 320c-8.8 0-16 7.2-16 16 0 34 13.5 66.5 37.5 90.5l32 32c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6l-32-32C113.8 385.6 104 361.6 104 336c0-8.8-7.2-16-16-16zm336 0c-8.8 0-16 7.2-16 16 0 25.6-9.8 49.6-28.1 67.9l-32 32c-6.2 6.2-6.2 16.4 0 22.6 6.2 6.2 16.4 6.2 22.6 0l32-32C426.5 402.5 440 370 440 336c0-8.8-7.2-16-16-16zM152 400c-8.8 0-16 7.2-16 16 0 28.3 16.8 53.9 42.6 65.4l40 17.8c8.1 3.6 17.6-.1 21.2-8.1 3.6-8.1-.1-17.6-8.1-21.2l-40-17.8C177.3 445.6 168 433.6 168 416c0-8.8-7.2-16-16-16zm208 0c-8.8 0-16 7.2-16 16 0 17.6-9.3 33.6-23.7 40.1l-40 17.8c-8.1 3.6-11.7 13.1-8.1 21.2 3.6 8.1 13.1 11.7 21.2 8.1l40-17.8C359.2 469.9 376 444.3 376 416c0-8.8-7.2-16-16-16z"/>
+        <svg class="spider-svg" viewBox="0 0 100 100">
+            <!-- Left Legs -->
+            <path class="spider-leg leg-l1" d="M 44,40 Q 22,22 10,14" />
+            <path class="spider-leg leg-l2" d="M 42,48 Q 18,38 8,42" />
+            <path class="spider-leg leg-l3" d="M 42,56 Q 16,68 12,78" />
+            <path class="spider-leg leg-l4" d="M 44,62 Q 22,86 18,98" />
+
+            <!-- Right Legs -->
+            <path class="spider-leg leg-r1" d="M 56,40 Q 78,22 90,14" />
+            <path class="spider-leg leg-r2" d="M 58,48 Q 82,38 92,42" />
+            <path class="spider-leg leg-r3" d="M 58,56 Q 84,68 88,78" />
+            <path class="spider-leg leg-r4" d="M 56,62 Q 78,86 82,98" />
+
+            <!-- Head / Cephalothorax -->
+            <ellipse class="spider-body" cx="50" cy="42" rx="7.5" ry="9" />
+
+            <!-- Abdomen -->
+            <ellipse class="spider-body" cx="50" cy="62" rx="11" ry="14" />
+
+            <!-- Glowing Eyes -->
+            <circle cx="47.5" cy="36" r="1.5" fill="#ffffff" />
+            <circle cx="52.5" cy="36" r="1.5" fill="#ffffff" />
         </svg>
     </div>
 
@@ -2537,7 +2611,7 @@
 
 
         /* =====================================================
-           CURSOR: GLOW, ROUND DOT & SPIDER FOLLOWER
+           CURSOR: GLOW, ROUND DOT & ANIMATED SPIDER WITH LEGS
         ===================================================== */
 
         const cursorGlow = document.querySelector('.cursor-glow');
@@ -2554,7 +2628,6 @@
             mouseX = e.clientX;
             mouseY = e.clientY;
 
-            // Immediate position for center dot and background ambient glow
             cursorDot.style.left = mouseX + 'px';
             cursorDot.style.top = mouseY + 'px';
 
@@ -2565,21 +2638,29 @@
             cursorRing.style.top = mouseY + 'px';
         });
 
-        // Smooth physics-based trailing movement and rotation for the Spider (Makdi)
+        // Smooth physics-based crawling & leg animation
         function animateSpider() {
             const dx = mouseX - spiderX;
             const dy = mouseY - spiderY;
+            const distance = Math.hypot(dx, dy);
 
-            // Lerp easing (smooth follow lag behind cursor)
+            // Lerp easing behind the cursor
             spiderX += dx * 0.08;
             spiderY += dy * 0.08;
 
-            // Angle to face the mouse pointer
+            // Face cursor direction (90deg offset so head points to mouse)
             const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
 
             spider.style.left = spiderX + 'px';
             spider.style.top = spiderY + 'px';
             spider.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+            // Jab spider move kare tabhi legs walk animation trigger kare
+            if (distance > 3) {
+                spider.classList.add('walking');
+            } else {
+                spider.classList.remove('walking');
+            }
 
             requestAnimationFrame(animateSpider);
         }
@@ -2594,12 +2675,12 @@
             slidesPerView: 1,
             spaceBetween: 20,
             loop: true,
-            grabCursor: true, // Mouse se pakad kar chalane ke liye
+            grabCursor: true,
             speed: 900,
             autoplay: {
                 delay: 2500,
                 disableOnInteraction: false,
-                pauseOnMouseEnter: true // Cursor aane par auto scroll ruk jayega
+                pauseOnMouseEnter: true
             },
             pagination: {
                 el: '.swiper-pagination',
