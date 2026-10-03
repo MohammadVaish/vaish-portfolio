@@ -127,7 +127,7 @@
 
 
         /* =========================================================
-           CURSOR GLOW
+           CURSOR GLOW, ROUND DOT & SPIDER FOLLOWER
         ========================================================= */
 
         .cursor-glow {
@@ -148,119 +148,91 @@
             z-index: 1;
         }
 
-
-        /* =========================================================
-           CODE PARTICLES
-        ========================================================= */
-
-        .code-particle {
+        /* Round Ring Cursor */
+        .cursor-ring {
             position: fixed;
-
-            color: rgba(0,229,255,.7);
-
-            font-family:
-                'Space Grotesk',
-                monospace;
-
-            font-size: 13px;
-
+            width: 34px;
+            height: 34px;
+            border: 1.5px solid var(--cyan);
+            border-radius: 50%;
             pointer-events: none;
-
-            z-index: 9999;
-
-            animation:
-                codeFall .9s ease-out forwards;
-
-            text-shadow:
-                0 0 10px rgba(0,229,255,.7);
+            z-index: 10001;
+            transform: translate(-50%, -50%);
+            transition: transform 0.08s ease-out;
+            box-shadow: 0 0 10px rgba(0, 229, 255, 0.4);
         }
 
-        @keyframes codeFall {
+        /* Inner Dot */
+        .cursor-dot {
+            position: fixed;
+            width: 6px;
+            height: 6px;
+            background: var(--cyan);
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 10002;
+            transform: translate(-50%, -50%);
+            box-shadow: 0 0 8px var(--cyan);
+        }
 
-            0% {
-                opacity: 0;
-                transform:
-                    translate(
-                        0,
-                        0
-                    )
-                    scale(.5)
-                    rotate(0deg);
-            }
+        /* Spider (Makdi) Follower */
+        .spider-follower {
+            position: fixed;
+            width: 28px;
+            height: 28px;
+            pointer-events: none;
+            z-index: 10000;
+            transform: translate(-50%, -50%);
+            filter: drop-shadow(0 0 6px rgba(0, 229, 255, 0.8));
+            opacity: 0.9;
+        }
 
-            20% {
-                opacity: 1;
-            }
-
-            100% {
-                opacity: 0;
-                transform:
-                    translate(
-                        var(--x),
-                        70px
-                    )
-                    scale(.9)
-                    rotate(var(--r));
-            }
+        .spider-follower svg {
+            width: 100%;
+            height: 100%;
+            fill: var(--cyan);
         }
 
 
         /* =========================================================
            NAVBAR
         ========================================================= */
-.navbar .logo img {
-    width: 180px;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
+        .navbar .logo img {
+            width: 180px;
+            height: auto;
+            display: block;
+            object-fit: contain;
+        }
 
-.navbar.sticky .logo img {
-    filter: brightness(0) invert(1);
-}
+        .navbar.sticky .logo img {
+            filter: brightness(0) invert(1);
+        }
+
         .navbar {
             position: fixed;
-
             top: 0;
             left: 0;
-
             width: 100%;
-
             z-index: 5000;
-
             padding: 22px 0;
-
             transition: .3s;
         }
 
         .navbar.scrolled {
-
-            background:
-                rgba(5,7,11,.82);
-
-            backdrop-filter:
-                blur(20px);
-
-            border-bottom:
-                1px solid
-                rgba(255,255,255,.08);
-
+            background: rgba(5,7,11,.82);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255,255,255,.08);
             padding: 15px 0;
         }
 
         .nav-inner {
-
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
 
         .logo {
-
-            font-family:
-                'Space Grotesk',
-                sans-serif;
-
+            font-family: 'Space Grotesk', sans-serif;
             font-size: 25px;
             font-weight: 700;
         }
@@ -270,22 +242,16 @@
         }
 
         .nav-links {
-
             display: flex;
             gap: 28px;
-
             list-style: none;
         }
 
         .nav-links a {
-
             color: #cbd2df;
-
             font-size: 14px;
             font-weight: 600;
-
             transition: .3s;
-
             position: relative;
         }
 
@@ -294,19 +260,13 @@
         }
 
         .nav-links a::after {
-
             content: "";
-
             position: absolute;
-
             left: 0;
             bottom: -7px;
-
             width: 0;
             height: 2px;
-
             background: var(--cyan);
-
             transition: .3s;
         }
 
@@ -315,19 +275,10 @@
         }
 
         .nav-btn {
-
-            padding:
-                10px
-                18px;
-
-            border:
-                1px solid
-                rgba(0,229,255,.4);
-
+            padding: 10px 18px;
+            border: 1px solid rgba(0,229,255,.4);
             border-radius: 30px;
-
             color: var(--cyan);
-
             font-size: 13px;
         }
 
@@ -343,131 +294,73 @@
         ========================================================= */
 
         .hero {
-
             min-height: 100vh;
-
             display: flex;
             align-items: center;
-
             padding-top: 130px;
-
             overflow: hidden;
         }
 
         .hero::before {
-
             content: "";
-
             position: absolute;
-
             width: 700px;
             height: 700px;
-
             top: -250px;
             right: -200px;
-
             background:
                 radial-gradient(
                     circle,
                     rgba(0,229,255,.13),
                     transparent 70%
                 );
-
             filter: blur(10px);
         }
 
         .hero-grid {
-
             display: grid;
-
-            grid-template-columns:
-                1.2fr .8fr;
-
+            grid-template-columns: 1.2fr .8fr;
             gap: 70px;
-
             align-items: center;
         }
 
         .availability {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 9px;
-
-            padding:
-                8px
-                13px;
-
-            border:
-                1px solid
-                rgba(0,245,160,.25);
-
+            padding: 8px 13px;
+            border: 1px solid rgba(0,245,160,.25);
             border-radius: 30px;
-
-            background:
-                rgba(0,245,160,.05);
-
-            color:
-                #8effd1;
-
+            background: rgba(0,245,160,.05);
+            color: #8effd1;
             font-size: 12px;
-
             margin-bottom: 25px;
         }
 
         .status-dot {
-
             width: 7px;
             height: 7px;
-
             background: var(--green);
-
             border-radius: 50%;
-
-            box-shadow:
-                0 0 12px
-                var(--green);
+            box-shadow: 0 0 12px var(--green);
         }
 
         .hero h1 {
-
-            font-family:
-                'Space Grotesk',
-                sans-serif;
-
-            font-size:
-                clamp(
-                    48px,
-                    7vw,
-                    90px
-                );
-
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(48px, 7vw, 90px);
             line-height: .98;
-
-            letter-spacing:
-                -4px;
+            letter-spacing: -4px;
         }
 
         .hero h1 span {
-
-            background:
-                var(--gradient);
-
-            -webkit-background-clip:
-                text;
-
-            -webkit-text-fill-color:
-                transparent;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .hero-role {
-
             margin-top: 25px;
-
             font-size: 25px;
-
             color: #cbd2df;
         }
 
@@ -476,91 +369,51 @@
         }
 
         .hero-description {
-
             margin-top: 20px;
-
             max-width: 650px;
-
             color: var(--muted);
-
             line-height: 1.8;
-
             font-size: 16px;
         }
 
         .hero-buttons {
-
             display: flex;
-
             gap: 15px;
-
             margin-top: 32px;
-
             flex-wrap: wrap;
         }
 
         .btn {
-
-            padding:
-                13px
-                22px;
-
+            padding: 13px 22px;
             border-radius: 8px;
-
             font-weight: 600;
-
             font-size: 14px;
-
             transition: .3s;
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 9px;
         }
 
         .btn-primary {
-
-            background:
-                var(--gradient);
-
+            background: var(--gradient);
             color: white;
-
-            box-shadow:
-                0 10px 35px
-                rgba(0,229,255,.15);
+            box-shadow: 0 10px 35px rgba(0,229,255,.15);
         }
 
         .btn-primary:hover {
-
-            transform:
-                translateY(-3px);
-
-            box-shadow:
-                0 15px 40px
-                rgba(0,229,255,.3);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(0,229,255,.3);
         }
 
         .btn-outline {
-
-            border:
-                1px solid
-                var(--border);
-
+            border: 1px solid var(--border);
             color: #dce2eb;
-
-            background:
-                rgba(255,255,255,.03);
+            background: rgba(255,255,255,.03);
         }
 
         .btn-outline:hover {
-
-            border-color:
-                var(--cyan);
-
-            color:
-                var(--cyan);
+            border-color: var(--cyan);
+            color: var(--cyan);
         }
 
 
@@ -569,24 +422,16 @@
         ========================================================= */
 
         .hero-photo-wrap {
-
             position: relative;
-
             width: 380px;
             height: 380px;
-
-            margin:
-                auto;
+            margin: auto;
         }
 
         .hero-photo-glow {
-
             position: absolute;
-
             inset: -30px;
-
             border-radius: 50%;
-
             background:
                 conic-gradient(
                     from 0deg,
@@ -595,34 +440,23 @@
                     transparent,
                     var(--cyan)
                 );
-
             filter: blur(35px);
-
             opacity: .35;
-
-            animation:
-                spinGlow 8s linear infinite;
+            animation: spinGlow 8s linear infinite;
         }
 
         @keyframes spinGlow {
-
             to {
-                transform:
-                    rotate(360deg);
+                transform: rotate(360deg);
             }
         }
 
         .hero-photo {
-
             position: relative;
-
             width: 100%;
             height: 100%;
-
             border-radius: 50%;
-
             padding: 5px;
-
             background:
                 linear-gradient(
                     135deg,
@@ -632,42 +466,22 @@
         }
 
         .hero-photo img {
-
             width: 100%;
             height: 100%;
-
             object-fit: cover;
-
             border-radius: 50%;
-
             background: #10151e;
         }
 
         .floating-code {
-
             position: absolute;
-
-            padding:
-                9px
-                13px;
-
-            background:
-                rgba(8,12,20,.85);
-
-            border:
-                1px solid
-                rgba(0,229,255,.2);
-
-            backdrop-filter:
-                blur(10px);
-
+            padding: 9px 13px;
+            background: rgba(8,12,20,.85);
+            border: 1px solid rgba(0,229,255,.2);
+            backdrop-filter: blur(10px);
             border-radius: 8px;
-
             color: var(--cyan);
-
-            font-family:
-                monospace;
-
+            font-family: monospace;
             font-size: 12px;
         }
 
@@ -692,38 +506,21 @@
         ========================================================= */
 
         .stats {
-
-            border-top:
-                1px solid
-                var(--border);
-
-            border-bottom:
-                1px solid
-                var(--border);
-
-            background:
-                rgba(255,255,255,.015);
+            border-top: 1px solid var(--border);
+            border-bottom: 1px solid var(--border);
+            background: rgba(255,255,255,.015);
         }
 
         .stats-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(4,1fr);
-
+            grid-template-columns: repeat(4,1fr);
             gap: 20px;
         }
 
         .stat {
-
             padding: 25px 10px;
-
             text-align: center;
-
-            border-right:
-                1px solid
-                var(--border);
+            border-right: 1px solid var(--border);
         }
 
         .stat:last-child {
@@ -731,29 +528,16 @@
         }
 
         .stat h3 {
-
-            font-family:
-                'Space Grotesk';
-
+            font-family: 'Space Grotesk';
             font-size: 38px;
-
-            background:
-                var(--gradient);
-
-            -webkit-background-clip:
-                text;
-
-            -webkit-text-fill-color:
-                transparent;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
         }
 
         .stat p {
-
-            color:
-                var(--muted);
-
+            color: var(--muted);
             font-size: 13px;
-
             margin-top: 5px;
         }
 
@@ -767,41 +551,22 @@
         }
 
         .eyebrow {
-
             color: var(--cyan);
-
-            font-family:
-                monospace;
-
+            font-family: monospace;
             font-size: 13px;
-
             margin-bottom: 12px;
         }
 
         .section-title {
-
-            font-family:
-                'Space Grotesk';
-
-            font-size:
-                clamp(
-                    35px,
-                    5vw,
-                    55px
-                );
-
-            letter-spacing:
-                -2px;
+            font-family: 'Space Grotesk';
+            font-size: clamp(35px, 5vw, 55px);
+            letter-spacing: -2px;
         }
 
         .section-description {
-
             max-width: 650px;
-
             color: var(--muted);
-
             line-height: 1.8;
-
             margin-top: 15px;
         }
 
@@ -811,83 +576,49 @@
         ========================================================= */
 
         .about-grid {
-
             display: grid;
-
-            grid-template-columns:
-                .75fr 1.25fr;
-
+            grid-template-columns: .75fr 1.25fr;
             gap: 70px;
-
             align-items: center;
         }
 
         .about-image {
-
             position: relative;
-
             max-width: 380px;
-
             margin: auto;
         }
 
         .about-image img {
-
             width: 100%;
-
             border-radius: 20px;
-
-            border:
-                1px solid
-                var(--border);
+            border: 1px solid var(--border);
         }
 
         .image-tag {
-
             position: absolute;
-
             right: -25px;
             bottom: 25px;
-
-            padding:
-                15px
-                18px;
-
-            background:
-                rgba(10,15,25,.9);
-
-            backdrop-filter:
-                blur(15px);
-
-            border:
-                1px solid
-                rgba(0,229,255,.25);
-
+            padding: 15px 18px;
+            background: rgba(10,15,25,.9);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(0,229,255,.25);
             border-radius: 12px;
         }
 
         .image-tag strong {
-
             display: block;
-
             font-size: 24px;
-
             color: var(--cyan);
         }
 
         .image-tag span {
-
             color: var(--muted);
-
             font-size: 11px;
         }
 
         .about-text {
-
             color: var(--muted);
-
             line-height: 1.9;
-
             font-size: 15px;
         }
 
@@ -896,40 +627,23 @@
         }
 
         .about-list {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(2,1fr);
-
+            grid-template-columns: repeat(2,1fr);
             gap: 12px;
-
             margin-top: 25px;
         }
 
         .about-list div {
-
-            padding:
-                13px;
-
-            border:
-                1px solid
-                var(--border);
-
-            background:
-                var(--card);
-
+            padding: 13px;
+            border: 1px solid var(--border);
+            background: var(--card);
             border-radius: 8px;
-
             color: #cbd2df;
-
             font-size: 13px;
         }
 
         .about-list i {
-
             color: var(--cyan);
-
             margin-right: 8px;
         }
 
@@ -939,7 +653,6 @@
         ========================================================= */
 
         .services {
-
             background:
                 linear-gradient(
                     180deg,
@@ -949,110 +662,62 @@
         }
 
         .services-grid {
-
             display: grid;
-
-            grid-template-columns:
-                repeat(3,1fr);
-
+            grid-template-columns: repeat(3,1fr);
             gap: 20px;
         }
 
         .service-card {
-
             padding: 30px;
-
             min-height: 240px;
-
-            border:
-                1px solid
-                var(--border);
-
-            background:
-                var(--card);
-
-            backdrop-filter:
-                blur(15px);
-
+            border: 1px solid var(--border);
+            background: var(--card);
+            backdrop-filter: blur(15px);
             border-radius: 16px;
-
             transition: .35s;
-
             position: relative;
-
             overflow: hidden;
         }
 
         .service-card::before {
-
             content: "";
-
             position: absolute;
-
             width: 160px;
             height: 160px;
-
             top: -80px;
             right: -80px;
-
-            background:
-                var(--cyan);
-
-            filter:
-                blur(90px);
-
+            background: var(--cyan);
+            filter: blur(90px);
             opacity: .08;
         }
 
         .service-card:hover {
-
-            transform:
-                translateY(-8px);
-
-            border-color:
-                rgba(0,229,255,.3);
-
-            box-shadow:
-                0 20px 60px
-                rgba(0,0,0,.3);
+            transform: translateY(-8px);
+            border-color: rgba(0,229,255,.3);
+            box-shadow: 0 20px 60px rgba(0,0,0,.3);
         }
 
         .service-icon {
-
             width: 52px;
             height: 52px;
-
             display: grid;
             place-items: center;
-
             border-radius: 12px;
-
-            background:
-                rgba(0,229,255,.08);
-
+            background: rgba(0,229,255,.08);
             color: var(--cyan);
-
             font-size: 21px;
-
             margin-bottom: 22px;
         }
 
         .service-card h3 {
-
-            font-family:
-                'Space Grotesk';
-
+            font-family: 'Space Grotesk';
             font-size: 21px;
-
             margin-bottom: 12px;
         }
 
         .service-card p {
-
             color: var(--muted);
-
             line-height: 1.7;
-
             font-size: 13px;
         }
 
@@ -1062,29 +727,19 @@
         ========================================================= */
 
         .skills-grid {
-
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
+            grid-template-columns: 1fr 1fr;
             gap: 70px;
         }
 
         .skill {
-
             margin-bottom: 22px;
         }
 
         .skill-info {
-
             display: flex;
-
-            justify-content:
-                space-between;
-
+            justify-content: space-between;
             margin-bottom: 8px;
-
             font-size: 13px;
         }
 
@@ -1093,226 +748,184 @@
         }
 
         .skill-bar {
-
             height: 5px;
-
-            background:
-                rgba(255,255,255,.08);
-
+            background: rgba(255,255,255,.08);
             border-radius: 20px;
-
             overflow: hidden;
         }
 
         .skill-fill {
-
             height: 100%;
-
             width: 0;
-
             border-radius: 20px;
-
-            background:
-                var(--gradient);
-
-            transition:
-                width 1.5s ease;
+            background: var(--gradient);
+            transition: width 1.5s ease;
         }
 
         .skill-cloud {
-
             display: flex;
-
             flex-wrap: wrap;
-
             gap: 10px;
-
             margin-top: 25px;
         }
 
         .skill-tag {
-
-            padding:
-                9px
-                13px;
-
-            border:
-                1px solid
-                var(--border);
-
+            padding: 9px 13px;
+            border: 1px solid var(--border);
             border-radius: 30px;
-
             color: #ccd4e2;
-
             font-size: 12px;
-
-            background:
-                rgba(255,255,255,.03);
-
+            background: rgba(255,255,255,.03);
             transition: .3s;
         }
 
         .skill-tag:hover {
-
-            border-color:
-                var(--cyan);
-
-            color:
-                var(--cyan);
+            border-color: var(--cyan);
+            color: var(--cyan);
         }
 
 
         /* =========================================================
-           LIVE WEBSITES
+           LIVE WEBSITES (SWIPER SLIDER)
         ========================================================= */
 
         .websites {
-
-            background:
-                #080c13;
+            background: #080c13;
+            overflow: hidden;
         }
 
-        .website-grid {
+        .websites-swiper {
+            padding-bottom: 50px !important;
+            padding-top: 10px !important;
+            cursor: grab;
+        }
 
-            display: grid;
-
-            grid-template-columns:
-                repeat(4,1fr);
-
-            gap: 18px;
+        .websites-swiper:active {
+            cursor: grabbing;
         }
 
         .website-card {
-
             min-height: 270px;
-
             padding: 25px;
-
             background:
                 linear-gradient(
                     145deg,
                     rgba(255,255,255,.07),
                     rgba(255,255,255,.025)
                 );
-
-            border:
-                1px solid
-                var(--border);
-
+            border: 1px solid var(--border);
             border-radius: 16px;
-
             transition: .35s;
-
             position: relative;
-
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
         }
 
         .website-card:hover {
-
-            transform:
-                translateY(-8px);
-
-            border-color:
-                rgba(0,229,255,.35);
+            transform: translateY(-8px);
+            border-color: rgba(0,229,255,.35);
         }
 
         .website-number {
-
             position: absolute;
-
             top: 18px;
             right: 20px;
-
-            color:
-                rgba(255,255,255,.18);
-
-            font-family:
-                monospace;
-
+            color: rgba(255,255,255,.18);
+            font-family: monospace;
             font-size: 12px;
         }
 
         .site-logo {
-
             width: 62px;
             height: 62px;
-
             display: grid;
             place-items: center;
-
             border-radius: 14px;
-
-            background:
-                white;
-
+            background: white;
             overflow: hidden;
-
             margin-bottom: 20px;
-
-            border:
-                1px solid
-                rgba(255,255,255,.1);
+            border: 1px solid rgba(255,255,255,.1);
         }
 
         .site-logo img {
-
             width: 70%;
             height: 70%;
-
             object-fit: contain;
         }
 
         .site-fallback {
-
-            font-family:
-                'Space Grotesk';
-
+            font-family: 'Space Grotesk';
             font-weight: 700;
-
             color: #111;
-
             font-size: 20px;
         }
 
         .website-card h3 {
-
-            font-family:
-                'Space Grotesk';
-
+            font-family: 'Space Grotesk';
             font-size: 19px;
-
             margin-bottom: 7px;
         }
 
         .website-card p {
-
-            color:
-                var(--muted);
-
+            color: var(--muted);
             font-size: 12px;
-
             line-height: 1.6;
-
             min-height: 58px;
         }
 
         .site-link {
-
             display: inline-flex;
-
             align-items: center;
-
             gap: 8px;
-
-            color:
-                var(--cyan);
-
+            color: var(--cyan);
             font-size: 12px;
-
-            margin-top: 18px;
-
+            margin-top: auto;
+            padding-top: 15px;
             font-weight: 600;
+        }
+
+        /* Swiper Controls Custom Styling */
+        .swiper-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .swiper-btn-prev,
+        .swiper-btn-next {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            border: 1px solid var(--border);
+            background: var(--card);
+            color: var(--cyan);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: .3s;
+        }
+
+        .swiper-btn-prev:hover,
+        .swiper-btn-next:hover {
+            border-color: var(--cyan);
+            background: rgba(0,229,255,.1);
+            transform: scale(1.05);
+        }
+
+        .swiper-pagination-bullet {
+            background: rgba(255,255,255,.3) !important;
+            transition: .3s;
+        }
+
+        .swiper-pagination-bullet-active {
+            background: var(--cyan) !important;
+            width: 22px !important;
+            border-radius: 10px !important;
         }
 
 
@@ -1321,31 +934,19 @@
         ========================================================= */
 
         .experience-box {
-
-            border:
-                1px solid
-                var(--border);
-
-            background:
-                var(--card);
-
+            border: 1px solid var(--border);
+            background: var(--card);
             border-radius: 20px;
-
             padding: 35px;
-
             position: relative;
         }
 
         .experience-line {
-
             position: absolute;
-
             left: 48px;
             top: 35px;
             bottom: 35px;
-
             width: 1px;
-
             background:
                 linear-gradient(
                     var(--cyan),
@@ -1354,11 +955,8 @@
         }
 
         .experience-item {
-
             position: relative;
-
             padding-left: 55px;
-
             margin-bottom: 45px;
         }
 
@@ -1367,67 +965,39 @@
         }
 
         .experience-dot {
-
             position: absolute;
-
             left: 42px;
             top: 5px;
-
             width: 13px;
             height: 13px;
-
-            background:
-                var(--cyan);
-
+            background: var(--cyan);
             border-radius: 50%;
-
-            box-shadow:
-                0 0 20px
-                var(--cyan);
+            box-shadow: 0 0 20px var(--cyan);
         }
 
         .experience-date {
-
-            color:
-                var(--cyan);
-
-            font-family:
-                monospace;
-
+            color: var(--cyan);
+            font-family: monospace;
             font-size: 12px;
-
             margin-bottom: 8px;
         }
 
         .experience-item h3 {
-
-            font-family:
-                'Space Grotesk';
-
+            font-family: 'Space Grotesk';
             font-size: 21px;
         }
 
         .experience-item h4 {
-
-            color:
-                #cbd2df;
-
+            color: #cbd2df;
             font-size: 13px;
-
             font-weight: 500;
-
             margin-top: 5px;
         }
 
         .experience-item p {
-
-            color:
-                var(--muted);
-
+            color: var(--muted);
             line-height: 1.7;
-
             margin-top: 10px;
-
             font-size: 13px;
         }
 
@@ -1437,82 +1007,50 @@
         ========================================================= */
 
         .contact-grid {
-
             display: grid;
-
-            grid-template-columns:
-                .8fr 1.2fr;
-
+            grid-template-columns: .8fr 1.2fr;
             gap: 50px;
         }
 
         .contact-card {
-
             padding: 30px;
-
-            background:
-                var(--card);
-
-            border:
-                1px solid
-                var(--border);
-
+            background: var(--card);
+            border: 1px solid var(--border);
             border-radius: 16px;
         }
 
         .contact-info {
-
             display: flex;
-
             gap: 15px;
-
             margin-bottom: 25px;
         }
 
         .contact-icon {
-
             min-width: 45px;
             height: 45px;
-
             display: grid;
             place-items: center;
-
             color: var(--cyan);
-
             border-radius: 10px;
-
-            background:
-                rgba(0,229,255,.08);
+            background: rgba(0,229,255,.08);
         }
 
         .contact-info span {
-
             display: block;
-
-            color:
-                var(--muted);
-
+            color: var(--muted);
             font-size: 11px;
-
             margin-bottom: 3px;
         }
 
         .contact-info strong {
-
             font-size: 13px;
-
             color: #e5eaf2;
-
             word-break: break-word;
         }
 
         .form-row {
-
             display: grid;
-
-            grid-template-columns:
-                1fr 1fr;
-
+            grid-template-columns: 1fr 1fr;
             gap: 15px;
         }
 
@@ -1522,46 +1060,26 @@
 
         .form-group input,
         .form-group textarea {
-
             width: 100%;
-
-            background:
-                rgba(255,255,255,.035);
-
-            border:
-                1px solid
-                var(--border);
-
+            background: rgba(255,255,255,.035);
+            border: 1px solid var(--border);
             outline: none;
-
             color: white;
-
-            padding:
-                14px 15px;
-
+            padding: 14px 15px;
             border-radius: 8px;
-
             font-family: inherit;
-
             transition: .3s;
         }
 
         .form-group textarea {
-
             min-height: 140px;
-
             resize: vertical;
         }
 
         .form-group input:focus,
         .form-group textarea:focus {
-
-            border-color:
-                rgba(0,229,255,.5);
-
-            box-shadow:
-                0 0 0 3px
-                rgba(0,229,255,.05);
+            border-color: rgba(0,229,255,.5);
+            box-shadow: 0 0 0 3px rgba(0,229,255,.05);
         }
 
 
@@ -1570,65 +1088,37 @@
         ========================================================= */
 
         footer {
-
-            padding:
-                40px 0;
-
-            border-top:
-                1px solid
-                var(--border);
-
+            padding: 40px 0;
+            border-top: 1px solid var(--border);
             text-align: center;
         }
 
         .socials {
-
             display: flex;
-
             justify-content: center;
-
             gap: 12px;
-
             margin-bottom: 20px;
         }
 
         .socials a {
-
             width: 42px;
             height: 42px;
-
             display: grid;
             place-items: center;
-
-            border:
-                1px solid
-                var(--border);
-
+            border: 1px solid var(--border);
             border-radius: 10px;
-
-            color:
-                #cbd2df;
-
+            color: #cbd2df;
             transition: .3s;
         }
 
         .socials a:hover {
-
-            color:
-                var(--cyan);
-
-            border-color:
-                var(--cyan);
-
-            transform:
-                translateY(-4px);
+            color: var(--cyan);
+            border-color: var(--cyan);
+            transform: translateY(-4px);
         }
 
         footer p {
-
-            color:
-                #697386;
-
+            color: #697386;
             font-size: 12px;
         }
 
@@ -1638,40 +1128,25 @@
         ========================================================= */
 
         .top-btn {
-
             position: fixed;
-
             right: 20px;
             bottom: 20px;
-
             width: 45px;
             height: 45px;
-
             display: grid;
             place-items: center;
-
             border-radius: 10px;
-
-            background:
-                var(--gradient);
-
+            background: var(--gradient);
             color: white;
-
             z-index: 3000;
-
             opacity: 0;
-
             pointer-events: none;
-
             transition: .3s;
         }
 
         .top-btn.show {
-
             opacity: 1;
-
-            pointer-events:
-                auto;
+            pointer-events: auto;
         }
 
 
@@ -1680,7 +1155,6 @@
         ========================================================= */
 
         @media(max-width:1000px) {
-
             .hero-grid,
             .about-grid,
             .skills-grid,
@@ -1706,18 +1180,11 @@
             }
 
             .services-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
-            }
-
-            .website-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
             .stats-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
             .stat:nth-child(2) {
@@ -1727,38 +1194,24 @@
 
 
         @media(max-width:700px) {
-
             section {
                 padding: 80px 0;
             }
 
             .container {
-                width:
-                    calc(100% - 28px);
+                width: calc(100% - 28px);
             }
 
             .nav-links {
-
                 position: fixed;
-
                 top: 70px;
                 left: 15px;
                 right: 15px;
-
                 padding: 25px;
-
-                background:
-                    rgba(5,7,11,.96);
-
-                border:
-                    1px solid
-                    var(--border);
-
+                background: rgba(5,7,11,.96);
+                border: 1px solid var(--border);
                 border-radius: 14px;
-
-                flex-direction:
-                    column;
-
+                flex-direction: column;
                 display: none;
             }
 
@@ -1775,8 +1228,7 @@
             }
 
             .hero h1 {
-                letter-spacing:
-                    -2px;
+                letter-spacing: -2px;
             }
 
             .hero-role {
@@ -1796,8 +1248,7 @@
                 right: -15px;
             }
 
-            .services-grid,
-            .website-grid {
+            .services-grid {
                 grid-template-columns: 1fr;
             }
 
@@ -1810,8 +1261,7 @@
             }
 
             .stats-grid {
-                grid-template-columns:
-                    repeat(2,1fr);
+                grid-template-columns: repeat(2,1fr);
             }
 
             .stat {
@@ -1839,10 +1289,20 @@
 
 
     <!-- =========================================================
-         CURSOR
+         CURSOR & SPIDER FOLLOWER
     ========================================================== -->
 
     <div class="cursor-glow"></div>
+    <div class="cursor-ring"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- Spider Follower (Makdi) -->
+    <div class="spider-follower" id="spiderFollower">
+        <svg viewBox="0 0 512 512">
+            <!-- Detailed SVG Spider Vector -->
+            <path d="M256 160c-26.5 0-48 21.5-48 48 0 14.2 6.2 27 16 35.8-15.3 14.5-25 35.1-25 58.2 0 44.2 35.8 80 80 80s80-35.8 80-80c0-23.1-9.7-43.7-25-58.2 9.8-8.8 16-21.6 16-35.8 0-26.5-21.5-48-48-48-7.7 0-15 1.8-21.4 5.1-7.2-3.3-15.3-5.1-24.6-5.1zM182.4 121.6c-4.4-7.6-14.1-10.2-21.7-5.8l-72 41.6c-7.6 4.4-10.2 14.1-5.8 21.7s14.1 10.2 21.7 5.8l63.5-36.6 28.5 49.4c4.4 7.6 14.1 10.2 21.7 5.8 7.6-4.4 10.2-14.1 5.8-21.7l-41.7-60.2zm147.2 0l-41.7 60.2c-4.4 7.6-1.8 17.3 5.8 21.7 7.6 4.4 17.3 1.8 21.7-5.8l28.5-49.4 63.5 36.6c7.6 4.4 17.3 1.8 21.7-5.8 4.4-7.6 1.8-17.3-5.8-21.7l-72-41.6c-7.6-4.4-17.3-1.8-21.7 5.8zM120 224c-8.8 0-16 7.2-16 16 0 17.2-6.8 33.7-18.7 45.7l-42.5 42.5c-6.2 6.2-6.2 16.4 0 22.6 6.2 6.2 16.4 6.2 22.6 0l42.5-42.5c17.9-17.9 28.1-42.6 28.1-68.3 0-8.8-7.2-16-16-16zm272 0c-8.8 0-16 7.2-16 16 0 25.7 10.2 50.4 28.1 68.3l42.5 42.5c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6l-42.5-42.5C414.8 273.7 408 257.2 408 240c0-8.8-7.2-16-16-16zM88 320c-8.8 0-16 7.2-16 16 0 34 13.5 66.5 37.5 90.5l32 32c6.2 6.2 16.4 6.2 22.6 0 6.2-6.2 6.2-16.4 0-22.6l-32-32C113.8 385.6 104 361.6 104 336c0-8.8-7.2-16-16-16zm336 0c-8.8 0-16 7.2-16 16 0 25.6-9.8 49.6-28.1 67.9l-32 32c-6.2 6.2-6.2 16.4 0 22.6 6.2 6.2 16.4 6.2 22.6 0l32-32C426.5 402.5 440 370 440 336c0-8.8-7.2-16-16-16zM152 400c-8.8 0-16 7.2-16 16 0 28.3 16.8 53.9 42.6 65.4l40 17.8c8.1 3.6 17.6-.1 21.2-8.1 3.6-8.1-.1-17.6-8.1-21.2l-40-17.8C177.3 445.6 168 433.6 168 416c0-8.8-7.2-16-16-16zm208 0c-8.8 0-16 7.2-16 16 0 17.6-9.3 33.6-23.7 40.1l-40 17.8c-8.1 3.6-11.7 13.1-8.1 21.2 3.6 8.1 13.1 11.7 21.2 8.1l40-17.8C359.2 469.9 376 444.3 376 416c0-8.8-7.2-16-16-16z"/>
+        </svg>
+    </div>
 
 
     <!-- =========================================================
@@ -1854,10 +1314,10 @@
         <div class="container nav-inner">
 
             <div class="logo">
-    <a href="#home">
-        <img src="images/mohammad-vaish-logo.png" alt="Mohammad Vaish">
-    </a>
-</div>
+                <a href="#home">
+                    <img src="images/mohammad-vaish-logo.png" alt="Mohammad Vaish">
+                </a>
+            </div>
 
             <ul class="nav-links">
 
@@ -1913,7 +1373,7 @@
 
         <div class="container hero-grid">
 
-            <div data-aos="fade-right">               
+            <div data-aos="fade-right">                
 
                 <h1>
                     Hi, I'm
@@ -1921,25 +1381,20 @@
                         Mohammad
                         Vaish
                     </span>
-
                 </h1>
 
                 <div class="hero-role">
-
                     <strong>
                         Web Developer
                     </strong>
                     · Next.js · Laravel
-
                 </div>
 
                 <p class="hero-description">
-
                     I build modern, responsive and
                     user-friendly websites with clean
                     interfaces, smooth animations and
                     business-focused digital experiences.
-
                 </p>
 
                 <div class="hero-buttons">
@@ -1947,22 +1402,16 @@
                     <a
                         href="#websites"
                         class="btn btn-primary">
-
                         <i class="fa-solid fa-globe"></i>
-
                         View Live Websites
-
                     </a>
 
                     <a
                         href="CV/vaish-CV.pdf"
                         class="btn btn-outline"
                         download>
-
                         <i class="fa-solid fa-download"></i>
-
                         Download CV
-
                     </a>
 
                 </div>
@@ -1977,11 +1426,9 @@
                     <div class="hero-photo-glow"></div>
 
                     <div class="hero-photo">
-
                         <img
                             src="images/mohammad-vaish.jpg"
                             alt="Mohammad Vaish">
-
                     </div>
 
                     <div class="floating-code fc1">
@@ -2015,51 +1462,23 @@
         <div class="container stats-grid">
 
             <div class="stat">
-
-                <h3>
-                    2.5+
-                </h3>
-
-                <p>
-                    Years Experience
-                </p>
-
+                <h3>2.5+</h3>
+                <p>Years Experience</p>
             </div>
 
             <div class="stat">
-
-                <h3>
-                    25+
-                </h3>
-
-                <p>
-                    Live Websites
-                </p>
-
+                <h3>25+</h3>
+                <p>Live Websites</p>
             </div>
 
             <div class="stat">
-
-                <h3>
-                    12+
-                </h3>
-
-                <p>
-                    Technologies
-                </p>
-
+                <h3>12+</h3>
+                <p>Technologies</p>
             </div>
 
             <div class="stat">
-
-                <h3>
-                    24/7
-                </h3>
-
-                <p>
-                    Learning Mindset
-                </p>
-
+                <h3>24/7</h3>
+                <p>Learning Mindset</p>
             </div>
 
         </div>
@@ -2105,15 +1524,8 @@
                         alt="Mohammad Vaish">
 
                     <div class="image-tag">
-
-                        <strong>
-                            2.5+
-                        </strong>
-
-                        <span>
-                            Years of experience
-                        </span>
-
+                        <strong>2.5+</strong>
+                        <span>Years of experience</span>
                     </div>
 
                 </div>
@@ -2122,7 +1534,6 @@
                 <div data-aos="fade-left">
 
                     <p class="about-text">
-
                         Hi, I'm
                         <strong>
                             Mohammad Vaish
@@ -2145,8 +1556,8 @@
                         handle
                         <strong>
                             graphics design, social media
-                        management, SEO and digital
-                        marketing
+                            management, SEO and digital
+                            marketing
                         </strong>.
 
                         <br><br>
@@ -2226,19 +1637,16 @@
                 </h2>
 
                 <p class="section-description">
-
                     From development to digital
                     presence, I can handle different
                     parts of a modern business website
                     and marketing workflow.
-
                 </p>
 
             </div>
 
 
             <div class="services-grid">
-
 
                 <div
                     class="service-card"
@@ -2410,87 +1818,53 @@
                 <div data-aos="fade-right">
 
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>HTML5</span>
                             <span>95%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="95%">
-                            </div>
+                            <div class="skill-fill" data-width="95%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>CSS3 / Bootstrap</span>
                             <span>90%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="90%">
-                            </div>
+                            <div class="skill-fill" data-width="90%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>JavaScript</span>
                             <span>80%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="80%">
-                            </div>
+                            <div class="skill-fill" data-width="80%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>React / Next.js</span>
                             <span>75%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="75%">
-                            </div>
+                            <div class="skill-fill" data-width="75%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>Laravel</span>
                             <span>75%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="75%">
-                            </div>
+                            <div class="skill-fill" data-width="75%"></div>
                         </div>
-
                     </div>
 
                 </div>
@@ -2499,75 +1873,46 @@
                 <div data-aos="fade-left">
 
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>Figma</span>
                             <span>85%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="85%">
-                            </div>
+                            <div class="skill-fill" data-width="85%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>Photoshop</span>
                             <span>80%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="80%">
-                            </div>
+                            <div class="skill-fill" data-width="80%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>WordPress</span>
                             <span>80%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="80%">
-                            </div>
+                            <div class="skill-fill" data-width="80%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill">
-
                         <div class="skill-info">
                             <span>SEO</span>
                             <span>70%</span>
                         </div>
-
                         <div class="skill-bar">
-                            <div
-                                class="skill-fill"
-                                data-width="70%">
-                            </div>
+                            <div class="skill-fill" data-width="70%"></div>
                         </div>
-
                     </div>
 
-
                     <div class="skill-cloud">
-
                         <span class="skill-tag">HTML5</span>
                         <span class="skill-tag">CSS3</span>
                         <span class="skill-tag">Bootstrap</span>
@@ -2582,7 +1927,6 @@
                         <span class="skill-tag">Canva</span>
                         <span class="skill-tag">SEO</span>
                         <span class="skill-tag">Social Media</span>
-
                     </div>
 
                 </div>
@@ -2596,7 +1940,7 @@
 
 
     <!-- =========================================================
-         LIVE WEBSITES
+         LIVE WEBSITES (SLIDER / CAROUSEL)
     ========================================================== -->
 
     <section
@@ -2618,401 +1962,222 @@
                 </h2>
 
                 <p class="section-description">
-
                     A selection of live websites and
                     digital products I've worked on.
-
                 </p>
 
             </div>
 
 
-            <div class="website-grid">
+            <!-- Swiper Container -->
+            <div class="swiper websites-swiper" data-aos="fade-up">
+                <div class="swiper-wrapper">
 
-
-                <!-- 01 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up">
-
-                    <span class="website-number">
-                        01
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://btnx.io/favicon.ico"
-                            alt="BTNX"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            BT
-                        </span>
-
+                    <!-- 01 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">01</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://btnx.io/favicon.ico"
+                                    alt="BTNX"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">BT</span>
+                            </div>
+                            <h3>BTNX</h3>
+                            <p>
+                                BitQuantum blockchain ecosystem
+                                and digital token infrastructure.
+                            </p>
+                            <a href="https://btnx.io/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
                     </div>
 
-                    <h3>
-                        BTNX
-                    </h3>
 
-                    <p>
-                        BitQuantum blockchain ecosystem
-                        and digital token infrastructure.
-                    </p>
+                    <!-- 02 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">02</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://lpsglobal.live/favicon.ico"
+                                    alt="LPS Global"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">LPS</span>
+                            </div>
+                            <h3>LPS Global</h3>
+                            <p>
+                                Technology-driven digital asset
+                                and structured account platform.
+                            </p>
+                            <a href="https://lpsglobal.live/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
 
-                    <a
-                        href="https://btnx.io/"
-                        target="_blank"
-                        class="site-link">
 
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                    <!-- 03 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">03</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://numehash.com/favicon.ico"
+                                    alt="NumeHash"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">NH</span>
+                            </div>
+                            <h3>NumeHash</h3>
+                            <p>
+                                Social networking, communication,
+                                creators and business ecosystem.
+                            </p>
+                            <a href="https://numehash.com/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
 
-                    </a>
+
+                    <!-- 04 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">04</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://numeflow.com/favicon.ico"
+                                    alt="NumeFlow"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">NF</span>
+                            </div>
+                            <h3>NumeFlow</h3>
+                            <p>
+                                Employee, attendance, leave,
+                                payroll, HR and business operations
+                                platform.
+                            </p>
+                            <a href="https://numeflow.com/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- 05 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">05</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://upvyapar.com/favicon.ico"
+                                    alt="UP Vyapar"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">UP</span>
+                            </div>
+                            <h3>UP Vyapar</h3>
+                            <p>
+                                Business listing and digital
+                                marketplace platform.
+                            </p>
+                            <a href="https://upvyapar.com/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- 06 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">06</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://paisapay.live/favicon.ico"
+                                    alt="PaisaPay"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">PP</span>
+                            </div>
+                            <h3>PaisaPay</h3>
+                            <p>
+                                Modern investment and financial
+                                information platform.
+                            </p>
+                            <a href="https://paisapay.live/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- 07 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">07</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://jeevanmitra.com/favicon.ico"
+                                    alt="Jeevan Mitra"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">JM</span>
+                            </div>
+                            <h3>Jeevan Mitra</h3>
+                            <p>
+                                Digital publication and content
+                                focused website.
+                            </p>
+                            <a href="https://jeevanmitra.com/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
+
+
+                    <!-- 08 -->
+                    <div class="swiper-slide">
+                        <div class="website-card">
+                            <span class="website-number">08</span>
+                            <div class="site-logo">
+                                <img
+                                    src="https://tejus.club/favicon.ico"
+                                    alt="Tejus"
+                                    onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
+                                <span class="site-fallback" style="display:none;">TJ</span>
+                            </div>
+                            <h3>Tejus</h3>
+                            <p>
+                                Modern digital platform with a
+                                clean communication-focused
+                                interface.
+                            </p>
+                            <a href="https://tejus.club/" target="_blank" class="site-link">
+                                Visit Website
+                                <i class="fa-solid fa-arrow-up-right-from-square"></i>
+                            </a>
+                        </div>
+                    </div>
 
                 </div>
 
-
-                <!-- 02 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="80">
-
-                    <span class="website-number">
-                        02
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://lpsglobal.live/favicon.ico"
-                            alt="LPS Global"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            LPS
-                        </span>
-
+                <!-- Slider Controls -->
+                <div class="swiper-controls">
+                    <div class="swiper-btn-prev">
+                        <i class="fa-solid fa-chevron-left"></i>
                     </div>
-
-                    <h3>
-                        LPS Global
-                    </h3>
-
-                    <p>
-                        Technology-driven digital asset
-                        and structured account platform.
-                    </p>
-
-                    <a
-                        href="https://lpsglobal.live/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- 03 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="160">
-
-                    <span class="website-number">
-                        03
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://numehash.com/favicon.ico"
-                            alt="NumeHash"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            NH
-                        </span>
-
+                    <div class="swiper-pagination"></div>
+                    <div class="swiper-btn-next">
+                        <i class="fa-solid fa-chevron-right"></i>
                     </div>
-
-                    <h3>
-                        NumeHash
-                    </h3>
-
-                    <p>
-                        Social networking, communication,
-                        creators and business ecosystem.
-                    </p>
-
-                    <a
-                        href="https://numehash.com/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
                 </div>
-
-
-                <!-- 04 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="240">
-
-                    <span class="website-number">
-                        04
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://numeflow.com/favicon.ico"
-                            alt="NumeFlow"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            NF
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        NumeFlow
-                    </h3>
-
-                    <p>
-                        Employee, attendance, leave,
-                        payroll, HR and business operations
-                        platform.
-                    </p>
-
-                    <a
-                        href="https://numeflow.com/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- 05 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up">
-
-                    <span class="website-number">
-                        05
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://upvyapar.com/favicon.ico"
-                            alt="UP Vyapar"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            UP
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        UP Vyapar
-                    </h3>
-
-                    <p>
-                        Business listing and digital
-                        marketplace platform.
-                    </p>
-
-                    <a
-                        href="https://upvyapar.com/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- 06 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="80">
-
-                    <span class="website-number">
-                        06
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://paisapay.live/favicon.ico"
-                            alt="PaisaPay"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            PP
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        PaisaPay
-                    </h3>
-
-                    <p>
-                        Modern investment and financial
-                        information platform.
-                    </p>
-
-                    <a
-                        href="https://paisapay.live/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- 07 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="160">
-
-                    <span class="website-number">
-                        07
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://jeevanmitra.com/favicon.ico"
-                            alt="Jeevan Mitra"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            JM
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Jeevan Mitra
-                    </h3>
-
-                    <p>
-                        Digital publication and content
-                        focused website.
-                    </p>
-
-                    <a
-                        href="https://jeevanmitra.com/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
-
-                <!-- 08 -->
-
-                <div
-                    class="website-card"
-                    data-aos="fade-up"
-                    data-aos-delay="240">
-
-                    <span class="website-number">
-                        08
-                    </span>
-
-                    <div class="site-logo">
-
-                        <img
-                            src="https://tejus.club/favicon.ico"
-                            alt="Tejus"
-                            onerror="this.style.display='none';this.nextElementSibling.style.display='block';">
-
-                        <span
-                            class="site-fallback"
-                            style="display:none;">
-                            TJ
-                        </span>
-
-                    </div>
-
-                    <h3>
-                        Tejus
-                    </h3>
-
-                    <p>
-                        Modern digital platform with a
-                        clean communication-focused
-                        interface.
-                    </p>
-
-                    <a
-                        href="https://tejus.club/"
-                        target="_blank"
-                        class="site-link">
-
-                        Visit Website
-                        <i class="fa-solid fa-arrow-up-right-from-square"></i>
-
-                    </a>
-
-                </div>
-
 
             </div>
 
@@ -3070,7 +2235,6 @@
                     </h4>
 
                     <p>
-
                         Working on real-world websites,
                         landing pages, business websites,
                         dashboards and digital platforms.
@@ -3079,7 +2243,6 @@
                         development, responsive UI,
                         animations, website maintenance,
                         graphics and digital content.
-
                     </p>
 
                 </div>
@@ -3102,13 +2265,11 @@
                     </h4>
 
                     <p>
-
                         Currently focusing on modern
                         JavaScript frameworks and building
                         scalable, responsive and
                         performance-focused web
                         experiences.
-
                     </p>
 
                 </div>
@@ -3143,11 +2304,9 @@
                 </h2>
 
                 <p class="section-description">
-
                     Have a project, job opportunity or
                     collaboration idea? Feel free to
                     contact me.
-
                 </p>
 
             </div>
@@ -3155,94 +2314,48 @@
 
             <div class="contact-grid">
 
-
                 <div
                     class="contact-card"
                     data-aos="fade-right">
 
-
                     <div class="contact-info">
-
                         <div class="contact-icon">
                             <i class="fa-solid fa-user"></i>
                         </div>
-
                         <div>
-
-                            <span>
-                                Name
-                            </span>
-
-                            <strong>
-                                Mohammad Vaish
-                            </strong>
-
+                            <span>Name</span>
+                            <strong>Mohammad Vaish</strong>
                         </div>
-
                     </div>
 
-
                     <div class="contact-info">
-
                         <div class="contact-icon">
                             <i class="fa-solid fa-location-dot"></i>
                         </div>
-
                         <div>
-
-                            <span>
-                                Location
-                            </span>
-
-                            <strong>
-                                New Delhi, India
-                            </strong>
-
+                            <span>Location</span>
+                            <strong>New Delhi, India</strong>
                         </div>
-
                     </div>
 
-
                     <div class="contact-info">
-
                         <div class="contact-icon">
                             <i class="fa-solid fa-envelope"></i>
                         </div>
-
                         <div>
-
-                            <span>
-                                Email
-                            </span>
-
-                            <strong>
-                                find.mohammadvaish@gmail.com
-                            </strong>
-
+                            <span>Email</span>
+                            <strong>find.mohammadvaish@gmail.com</strong>
                         </div>
-
                     </div>
 
-
                     <div class="contact-info">
-
                         <div class="contact-icon">
                             <i class="fa-solid fa-briefcase"></i>
                         </div>
-
                         <div>
-
-                            <span>
-                                Expertise
-                            </span>
-
-                            <strong>
-                                Web Development & Digital
-                                Solutions
-                            </strong>
-
+                            <span>Expertise</span>
+                            <strong>Web Development & Digital Solutions</strong>
                         </div>
-
                     </div>
 
                 </div>
@@ -3252,63 +2365,48 @@
                     class="contact-card"
                     data-aos="fade-left">
 
-                    <form
-                        id="contact-form">
+                    <form id="contact-form">
 
                         <div class="form-row">
 
                             <div class="form-group">
-
                                 <input
                                     type="text"
                                     name="name"
                                     placeholder="Your Name"
                                     required>
-
                             </div>
 
                             <div class="form-group">
-
                                 <input
                                     type="email"
                                     name="email"
                                     placeholder="Your Email"
                                     required>
-
                             </div>
 
                         </div>
 
-
                         <div class="form-group">
-
                             <input
                                 type="text"
                                 name="subject"
                                 placeholder="Subject"
                                 required>
-
                         </div>
 
-
                         <div class="form-group">
-
                             <textarea
                                 name="message"
                                 placeholder="Tell me about your project..."
                                 required></textarea>
-
                         </div>
-
 
                         <button
                             type="submit"
                             class="btn btn-primary">
-
                             <i class="fa-solid fa-paper-plane"></i>
-
                             Send Message
-
                         </button>
 
                     </form>
@@ -3333,55 +2431,31 @@
 
             <div class="socials">
 
-                <a
-                    href="https://github.com/MohammadVaish"
-                    target="_blank">
-
+                <a href="https://github.com/MohammadVaish" target="_blank">
                     <i class="fa-brands fa-github"></i>
-
                 </a>
-                <a
-                    href="https://www.linkedin.com/in/mohammad-vaish-414204362/"
-                    target="_blank">
-
+                <a href="https://www.linkedin.com/in/mohammad-vaish-414204362/" target="_blank">
                     <i class="fa-brands fa-linkedin-in"></i>
-
                 </a>
 
-
-                <a
-                    href="https://www.instagram.com/md_vaish_07/"
-                    target="_blank">
-
+                <a href="https://www.instagram.com/md_vaish_07/" target="_blank">
                     <i class="fa-brands fa-instagram"></i>
-
                 </a>
 
-                <a
-                    href="mailto:find.mohammadvaish@gmail.com">
-
+                <a href="mailto:find.mohammadvaish@gmail.com">
                     <i class="fa-solid fa-envelope"></i>
-
                 </a>
 
-                <a
-                    href="tel:+919511068964">
-
+                <a href="tel:+919511068964">
                     <i class="fa-brands fa-whatsapp"></i>
-
                 </a>
 
             </div>
 
-
             <p>
-
                 © 2026
-                <strong>
-                    Mohammad Vaish
-                </strong>.
+                <strong>Mohammad Vaish</strong>.
                 All Rights Reserved.
-
             </p>
 
         </div>
@@ -3395,9 +2469,7 @@
     <a
         href="#home"
         class="top-btn">
-
         <i class="fa-solid fa-arrow-up"></i>
-
     </a>
 
 
@@ -3406,17 +2478,9 @@
          SCRIPTS
     ========================================================== -->
 
-    <script
-        src="https://unpkg.com/aos@2.3.4/dist/aos.js">
-    </script>
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js">
-    </script>
-
-    <script
-        src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js">
-    </script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
 
 
     <script>
@@ -3426,431 +2490,219 @@
         ===================================================== */
 
         AOS.init({
-
             duration: 800,
-
             once: true,
-
             offset: 70
-
         });
 
 
         /* =====================================================
-           NAVBAR
+           NAVBAR & BACK TO TOP
         ===================================================== */
 
-        const navbar =
-            document.querySelector('.navbar');
+        const navbar = document.querySelector('.navbar');
+        const topBtn = document.querySelector('.top-btn');
 
-        const topBtn =
-            document.querySelector('.top-btn');
-
-        window.addEventListener(
-            'scroll',
-            () => {
-
-                if (
-                    window.scrollY > 50
-                ) {
-
-                    navbar.classList.add(
-                        'scrolled'
-                    );
-
-                } else {
-
-                    navbar.classList.remove(
-                        'scrolled'
-                    );
-
-                }
-
-
-                if (
-                    window.scrollY > 600
-                ) {
-
-                    topBtn.classList.add(
-                        'show'
-                    );
-
-                } else {
-
-                    topBtn.classList.remove(
-                        'show'
-                    );
-
-                }
-
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
             }
-        );
+
+            if (window.scrollY > 600) {
+                topBtn.classList.add('show');
+            } else {
+                topBtn.classList.remove('show');
+            }
+        });
 
 
         /* =====================================================
            MOBILE MENU
         ===================================================== */
 
-        const menuBtn =
-            document.querySelector(
-                '.menu-btn'
-            );
+        const menuBtn = document.querySelector('.menu-btn');
+        const navLinks = document.querySelector('.nav-links');
 
-        const navLinks =
-            document.querySelector(
-                '.nav-links'
-            );
+        menuBtn.addEventListener('click', () => {
+            navLinks.classList.toggle('active');
+        });
 
-        menuBtn.addEventListener(
-            'click',
-            () => {
-
-                navLinks.classList.toggle(
-                    'active'
-                );
-
-            }
-        );
-
-
-        document
-            .querySelectorAll(
-                '.nav-links a'
-            )
-            .forEach(
-                link => {
-
-                    link.addEventListener(
-                        'click',
-                        () => {
-
-                            navLinks.classList.remove(
-                                'active'
-                            );
-
-                        }
-                    );
-
-                }
-            );
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+            });
+        });
 
 
         /* =====================================================
-           CURSOR GLOW
+           CURSOR: GLOW, ROUND DOT & SPIDER FOLLOWER
         ===================================================== */
 
-        const cursorGlow =
-            document.querySelector(
-                '.cursor-glow'
-            );
+        const cursorGlow = document.querySelector('.cursor-glow');
+        const cursorRing = document.querySelector('.cursor-ring');
+        const cursorDot = document.querySelector('.cursor-dot');
+        const spider = document.getElementById('spiderFollower');
 
-        document.addEventListener(
-            'mousemove',
-            e => {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let spiderX = mouseX;
+        let spiderY = mouseY;
 
-                cursorGlow.style.left =
-                    e.clientX + 'px';
+        document.addEventListener('mousemove', e => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
 
-                cursorGlow.style.top =
-                    e.clientY + 'px';
+            // Immediate position for center dot and background ambient glow
+            cursorDot.style.left = mouseX + 'px';
+            cursorDot.style.top = mouseY + 'px';
 
-            }
-        );
+            cursorGlow.style.left = mouseX + 'px';
+            cursorGlow.style.top = mouseY + 'px';
+
+            cursorRing.style.left = mouseX + 'px';
+            cursorRing.style.top = mouseY + 'px';
+        });
+
+        // Smooth physics-based trailing movement and rotation for the Spider (Makdi)
+        function animateSpider() {
+            const dx = mouseX - spiderX;
+            const dy = mouseY - spiderY;
+
+            // Lerp easing (smooth follow lag behind cursor)
+            spiderX += dx * 0.08;
+            spiderY += dy * 0.08;
+
+            // Angle to face the mouse pointer
+            const angle = Math.atan2(dy, dx) * (180 / Math.PI) + 90;
+
+            spider.style.left = spiderX + 'px';
+            spider.style.top = spiderY + 'px';
+            spider.style.transform = `translate(-50%, -50%) rotate(${angle}deg)`;
+
+            requestAnimationFrame(animateSpider);
+        }
+        animateSpider();
 
 
         /* =====================================================
-           CODE PARTICLES
+           LIVE WEBSITES SWIPER (SLIDER)
         ===================================================== */
 
-        const codeSymbols = [
-
-            '</>',
-            '{}',
-            '01',
-            'JS',
-            'CSS',
-            'HTML',
-            'React',
-            'Next',
-            'Laravel',
-            '&&',
-            '=>',
-            '/>',
-            'npm',
-            'const',
-            'div'
-
-        ];
-
-        let lastParticle = 0;
-
-        document.addEventListener(
-            'mousemove',
-            e => {
-
-                const now =
-                    Date.now();
-
-                if (
-                    now - lastParticle < 70
-                ) {
-                    return;
+        const websitesSwiper = new Swiper('.websites-swiper', {
+            slidesPerView: 1,
+            spaceBetween: 20,
+            loop: true,
+            grabCursor: true, // Mouse se pakad kar chalane ke liye
+            speed: 900,
+            autoplay: {
+                delay: 2500,
+                disableOnInteraction: false,
+                pauseOnMouseEnter: true // Cursor aane par auto scroll ruk jayega
+            },
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-btn-next',
+                prevEl: '.swiper-btn-prev',
+            },
+            breakpoints: {
+                640: {
+                    slidesPerView: 2,
+                    spaceBetween: 20,
+                },
+                992: {
+                    slidesPerView: 3,
+                    spaceBetween: 24,
+                },
+                1200: {
+                    slidesPerView: 4,
+                    spaceBetween: 24,
                 }
-
-                lastParticle = now;
-
-                const particle =
-                    document.createElement(
-                        'span'
-                    );
-
-                particle.className =
-                    'code-particle';
-
-                particle.innerText =
-                    codeSymbols[
-                        Math.floor(
-                            Math.random()
-                            *
-                            codeSymbols.length
-                        )
-                    ];
-
-                particle.style.left =
-                    e.clientX + 'px';
-
-                particle.style.top =
-                    e.clientY + 'px';
-
-                particle.style
-                    .setProperty(
-                        '--x',
-                        (
-                            Math.random()
-                            * 70
-                            - 35
-                        ) + 'px'
-                    );
-
-                particle.style
-                    .setProperty(
-                        '--r',
-                        (
-                            Math.random()
-                            * 60
-                            - 30
-                        ) + 'deg'
-                    );
-
-                document.body.appendChild(
-                    particle
-                );
-
-                setTimeout(
-                    () => {
-
-                        particle.remove();
-
-                    },
-                    900
-                );
-
             }
-        );
+        });
 
 
         /* =====================================================
            SKILL BARS
         ===================================================== */
 
-        const skillFills =
-            document.querySelectorAll(
-                '.skill-fill'
-            );
+        const skillFills = document.querySelectorAll('.skill-fill');
 
-        const skillObserver =
-            new IntersectionObserver(
-                entries => {
-
-                    entries.forEach(
-                        entry => {
-
-                            if (
-                                entry.isIntersecting
-                            ) {
-
-                                const width =
-                                    entry.target
-                                        .dataset
-                                        .width;
-
-                                entry.target.style.width =
-                                    width;
-
-                            }
-
-                        }
-                    );
-
-                },
-                {
-                    threshold: .4
-                }
-            );
-
-
-        skillFills.forEach(
-            skill => {
-
-                skillObserver.observe(
-                    skill
-                );
-
-            }
+        const skillObserver = new IntersectionObserver(
+            entries => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        const width = entry.target.dataset.width;
+                        entry.target.style.width = width;
+                    }
+                });
+            },
+            { threshold: .4 }
         );
+
+        skillFills.forEach(skill => {
+            skillObserver.observe(skill);
+        });
 
 
         /* =====================================================
            CONTACT FORM
         ===================================================== */
 
-        /*
-            EmailJS configuration.
+        const EMAILJS_PUBLIC_KEY = "YTjvJpEP9_luPKlM2";
+        const EMAILJS_SERVICE_ID = "service_k5opmhg";
+        const EMAILJS_TEMPLATE_ID = "template_7t8tdnt";
 
-            Replace these three values with your
-            current EmailJS credentials if required.
-        */
+        emailjs.init(EMAILJS_PUBLIC_KEY);
 
-        const EMAILJS_PUBLIC_KEY =
-            "YTjvJpEP9_luPKlM2";
+        const contactForm = document.getElementById('contact-form');
 
-        const EMAILJS_SERVICE_ID =
-            "service_k5opmhg";
+        contactForm.addEventListener('submit', function(e) {
+            e.preventDefault();
 
-        const EMAILJS_TEMPLATE_ID =
-            "template_7t8tdnt";
+            const button = this.querySelector('button');
+            const oldText = button.innerHTML;
 
+            button.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
+            button.disabled = true;
 
-        emailjs.init(
-            EMAILJS_PUBLIC_KEY
-        );
-
-
-        const contactForm =
-            document.getElementById(
-                'contact-form'
-            );
-
-
-        contactForm.addEventListener(
-            'submit',
-            function(e) {
-
-                e.preventDefault();
-
-
-                const button =
-                    this.querySelector(
-                        'button'
-                    );
-
-                const oldText =
-                    button.innerHTML;
-
-
-                button.innerHTML =
-                    '<i class="fa-solid fa-spinner fa-spin"></i> Sending...';
-
-                button.disabled =
-                    true;
-
-
-                emailjs.sendForm(
-
-                    EMAILJS_SERVICE_ID,
-
-                    EMAILJS_TEMPLATE_ID,
-
-                    this
-
-                )
-                .then(
-                    () => {
-
-                        alert(
-                            "Message sent successfully ✅"
-                        );
-
-                        contactForm.reset();
-
-                        button.innerHTML =
-                            oldText;
-
-                        button.disabled =
-                            false;
-
-                    }
-                )
-                .catch(
-                    error => {
-
-                        console.error(
-                            error
-                        );
-
-                        alert(
-                            "Message could not be sent. Please try again."
-                        );
-
-                        button.innerHTML =
-                            oldText;
-
-                        button.disabled =
-                            false;
-
-                    }
-                );
-
-            }
-        );
+            emailjs.sendForm(
+                EMAILJS_SERVICE_ID,
+                EMAILJS_TEMPLATE_ID,
+                this
+            )
+            .then(() => {
+                alert("Message sent successfully ✅");
+                contactForm.reset();
+                button.innerHTML = oldText;
+                button.disabled = false;
+            })
+            .catch(error => {
+                console.error(error);
+                alert("Message could not be sent. Please try again.");
+                button.innerHTML = oldText;
+                button.disabled = false;
+            });
+        });
 
 
         /* =====================================================
            WEBSITE LOGO FALLBACK
         ===================================================== */
 
-        document
-            .querySelectorAll(
-                '.site-logo img'
-            )
-            .forEach(
-                img => {
-
-                    img.addEventListener(
-                        'error',
-                        function() {
-
-                            this.style.display =
-                                'none';
-
-                            const fallback =
-                                this.parentElement
-                                    .querySelector(
-                                        '.site-fallback'
-                                    );
-
-                            if (fallback) {
-
-                                fallback.style.display =
-                                    'block';
-
-                            }
-
-                        }
-                    );
-
+        document.querySelectorAll('.site-logo img').forEach(img => {
+            img.addEventListener('error', function() {
+                this.style.display = 'none';
+                const fallback = this.parentElement.querySelector('.site-fallback');
+                if (fallback) {
+                    fallback.style.display = 'block';
                 }
-            );
+            });
+        });
 
     </script>
 
